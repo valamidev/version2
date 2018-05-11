@@ -15,12 +15,12 @@ function valid_account()
                     }
                     else
                     {
-                    reject("Locked");
+                    reject(1);
                     }
             }        
             else
             {
-             reject("Missing");
+             reject(2);
             }        
           });
 }

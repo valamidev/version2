@@ -129,6 +129,8 @@ function buy_action_rig (data)
         let possible_buy = 0;
         let cost_next = 0;
 
+
+        
         if(game.Minerrigdata[index].rigCount==0) // SHOW NEXT LOCKED RIG!
         {
 

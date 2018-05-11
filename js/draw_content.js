@@ -278,6 +278,11 @@ function update_booster_ui ()
     }    
 }
 
+function game_started()
+{
+    $("main").show();  
+    $("prologe").hide(); 
+}
 
 function generate_leaderboard()
 {

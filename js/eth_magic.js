@@ -1,17 +1,7 @@
     window.addEventListener('load', function() {
             
-      valid_account().catch(function(err)
-      { 
-      show_error_metamask(err)
-      }
-      ).then(function(ress)
-      { 
-        if(ress)
-        {
-        startApp(ress);
-        }
-      });
-    
+      refresh_gui_dapp();
+
     });
 
       // CONTRACT ADDRESSS! 
@@ -27,15 +17,24 @@
 
       function refresh_gui_dapp()
       {
-          valid_account().then(function(err,ress)
+          valid_account().then(function(ress)
                 {
                   if(ress)
                   {
-                  startApp(ress)
+                  console.log(ress);
+                  startApp(ress);
                   }
                 }).catch(function(err)
                 { 
-                show_error_metamask(err,1)
+                  console.log(err);
+                  $("prologe").show();  
+                  $("main").hide();  
+                  if(err==1)
+                  {
+                    setTimeout(function(){
+                      refresh_gui_dapp(); 
+                     }, 5000);
+                  }
                 });
       }
 
@@ -68,6 +67,15 @@
                        GetPrestigeInfo(game.prestigeLevel);
                        GetPrestigeInfo(game.prestigeLevel+1);
 
+                      if(game.prodPerSec>0){ // SHOW GUI
+                      game_started();
+                      }
+                      else
+                      {
+                        setTimeout(function(){
+                          contract_init(); 
+                         }, 5000); 
+                      }
                         /*
                               GetMinerData(address minerAddr) public constant returns 
                                 (uint256 money, uint256 lastupdate, uint256 prodPerSec, 
