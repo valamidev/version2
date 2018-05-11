@@ -188,6 +188,7 @@ function update_rig_ui(idx,count,possible_buy,cost_next)
         $('[data-card="1-'+idx+'-1"]').show(); 
         $('.card').find('[data-rig-unlocked="' + idx + '"]').show();   
         $('.card').find('[data-owned-count-rig="' + idx + '"]').html(count+'X').show(); 
+        $('.card').find('[data-rig-locked="' + idx + '"]').hide();  
     }
     else
     {
