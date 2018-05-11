@@ -8,8 +8,6 @@ function update_dash()
       bonus = " +"+(game.prestige_info[game.prestigeLevel].bonus-100)+"% Hash";
     }
 
-    console.log(game.prestige_info[game.prestigeLevel].price);
-
     if(typeof game.prestige_info[game.prestigeLevel]  != 'undefined')
     {
 
@@ -265,10 +263,12 @@ function update_booster_ui ()
         if(game.Minerboosterdata[idx] == 0)
         {
         $('.card').find('[data-booster-button="' + idx + '"]').show();
+        $('.card').find('[data-booster-own-button="' + idx + '"]').hide();
         }
         else
         {
         $('.card').find('[data-booster-own-button="' + idx + '"]').show();
+        $('.card').find('[data-booster-button="' + idx + '"]').hide();
         }
 
 
