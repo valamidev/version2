@@ -15,7 +15,7 @@
     });
 
       // CONTRACT ADDRESSS! 
-      const contract_address = "0x062e5a9e916dc10df1bd41971ebd008c2e43a3d1";
+      const contract_address = "0x03d02e42df0551e43dc17f343df7cbed52dced1f";
       // USER ACCOUNT!
       var account =  web3.eth.accounts[0];
 
