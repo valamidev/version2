@@ -1,6 +1,8 @@
 function update_dash()
 {
 
+    $("#debug_prestige").hide();
+
     let bonus = "";
 
     if(game.prestige_info[game.prestigeLevel].bonus > 100)
