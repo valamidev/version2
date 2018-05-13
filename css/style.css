@@ -416,3 +416,9 @@ body{
     color: #000;
     border-color:#ffa014;
  }
+
+ .game-components
+{
+  list-style: none;
+
+}
