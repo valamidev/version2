@@ -425,24 +425,6 @@
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "idx",
-				"type": "uint256"
-			},
-			{
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "DEBUGRig",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"constant": true,
 		"inputs": [],
 		"name": "GetBoosterCount",
@@ -484,30 +466,12 @@
 				"type": "uint256[10]"
 			},
 			{
-				"name": "flatBonus",
-				"type": "uint256[10]"
-			},
-			{
-				"name": "pctBonus",
+				"name": "totalProduction",
 				"type": "uint256[10]"
 			}
 		],
 		"payable": false,
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "DEBUGMoney",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
