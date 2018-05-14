@@ -134,8 +134,7 @@
                       game.Minerrigdata[index] = {};
 
                       game.Minerrigdata[index].rigCount = ress[0][index].toNumber();
-                      game.Minerrigdata[index].rigFlatBonus = ress[1][index].toNumber();
-                      game.Minerrigdata[index].rigPctBonus = ress[2][index].toNumber();
+                      game.Minerrigdata[index].rigTotalProduction = ress[1][index].toNumber();
                     }
 
 

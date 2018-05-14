@@ -185,6 +185,8 @@ function update_rig_ui(idx,count,possible_buy,cost_next)
     $('.card').find('[data-price-next-rig="' + idx+'-1"]').html(show_big_values(cost_next));  
     $('.card').find('[data-buyrig-unlock-button="' + idx+'-1"]').html(show_big_values(cost_next));  
 
+    $('[data-rig-hashrate="1-'+idx+'-1"]').html(game.Minerrigdata[idx].rigTotalProduction); 
+
     if(count > 0)
     {
         $('[data-card="1-'+idx+'-1"]').show(); 
