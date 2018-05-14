@@ -7,7 +7,7 @@ game.default_gas_price = web3.toHex(2100000000); //2.1 Gwei best price!
 game.optimalsavetime = 10800;
 game.optimalclaim = 86400;
 
-game.debug = 0; // TRUE DEBUG!
+game.debug = 1; // TRUE DEBUG!
 
 game.user_address = "";
 
