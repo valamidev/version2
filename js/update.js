@@ -55,12 +55,12 @@ function AddorModifyRig()
   function AddNewBooster()
 {
      idx = 1;   
-     rigType = 1;
-     flatBonus = 0;
-     pctBonus = 1000;
+     rigType = -1;
+     flatBonus = 20000;
+     pctBonus = 0;
      ETHPrice = 10000000000000000; // WEI 0.01 ETH
      priceIncreasePct = 15;
-     totalCount = 3;
+     totalCount = 1;
 
     rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
