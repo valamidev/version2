@@ -209,7 +209,7 @@
 
           if( parseInt(game.referee) == parseInt(account))
           {
-            game.referee = "0x6c9ab3a2cd5a104cec2bf019c7377d16dc54de96";
+            game.referee = legacy_reff();
           }
 
           console.log("Referral: "+game.referee);
