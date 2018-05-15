@@ -35,3 +35,12 @@ gametext.welcome =
      boosterdata[2].spec = "sdaf sdf dsf dsaf dsf!";
      boosterdata[2].img =  "./images/bitconeeeee.png";
    
+
+
+// Alliases
+
+    alliases = 
+    {
+     "0x6c9ab3a2cd5a104cec2bf019c7377d16dc54de96" : "GitMiner",   
+
+    };

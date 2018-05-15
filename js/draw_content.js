@@ -290,11 +290,12 @@ function game_started()
 function generate_leaderboard()
 {
     let content = "";
-
+    
     for (let index = 0; index < game.leaderboard.length; index++) 
     {
             let user_data = game.leaderboard[index];
             let button = "";
+            let address_or_allias = "";
 
          if(index>=1)
          {
@@ -302,10 +303,19 @@ function generate_leaderboard()
                 {   
                     continue;    
                 }
-         }   
+         }
+         
+         if(typeof alliases[game.leaderboard[index][7]]  != 'undefined')
+                {
+                    address_or_allias = alliases[game.leaderboard[index][7]]; 
+                }
+         else
+         {
+            address_or_allias = game.leaderboard[index][7];  
+         }       
 
             content+= "<tr>"+
-            "<td>"+game.leaderboard[index][7]+"</td>"+ 
+            "<td>"+address_or_allias+"</td>"+ 
             "<td>"+show_big_values(game.leaderboard[index][6])+"</td>"+
             "<td>"+show_big_values(game.leaderboard[index][0])+"</td>"+
             "</tr>";
