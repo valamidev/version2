@@ -67,7 +67,7 @@ function referre_manager()
     return Cookies.get('referral_cookie');
   }
 
-  return "0x6C9ab3a2Cd5A104CeC2bf019C7377d16dC54De96";
+  return "0x6c9ab3a2cd5a104cec2bf019c7377d16dc54de96";
 }  
 
 
