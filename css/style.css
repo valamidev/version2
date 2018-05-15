@@ -422,3 +422,12 @@ body{
   list-style: none;
 
 }
+
+.logo {
+    width: 200px;
+    height: 50px;
+}
+
+.navbar{
+  padding: 0px;  
+}
