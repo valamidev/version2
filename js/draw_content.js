@@ -250,7 +250,7 @@ function update_booster_ui ()
 
         let idx = index;
 
-        if(game.prodPerSec>0)
+        if(game.prodPerSec>0 && game.boosterdata[idx].locktime < game.time)
         {
         $('[data-card="4-' + idx+ '-1"]').show();
         }

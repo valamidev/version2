@@ -23,10 +23,10 @@ gametext.welcome =
 
 
      boosterdata[1] = {};
-     boosterdata[1].name = "BOOSTER 2";
-     boosterdata[1].desc = "Only 3 exists, ifyou are outbuyed 20% interest is yours! A Great boost for starters";
-     boosterdata[1].spec = "1000% bonus for Cloud Mining!";
-     boosterdata[1].img =  "./images/bitconeeeee.png";
+     boosterdata[1].name = "";
+     boosterdata[1].desc = "Only 10 exists, if you are outbuyed 25% interest is yours!";
+     boosterdata[1].spec = "+1000% bonus for Cloud Mining!";
+     boosterdata[1].img =  "./images/hashflare.gif";
 
     
      boosterdata[2] = {};

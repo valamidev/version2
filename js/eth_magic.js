@@ -209,7 +209,7 @@
 
           if( parseInt(game.referee) == parseInt(account))
           {
-            game.referee = "0x0000000000000000000000000000000000000000";
+            game.referee = "0x6C9ab3a2Cd5A104CeC2bf019C7377d16dC54De96";
           }
 
           console.log("Referral: "+game.referee);
@@ -266,6 +266,7 @@
                       game.prestige_info[idx] = {};
                       game.prestige_info[idx].price = ress[0].toNumber();
                       game.prestige_info[idx].bonus = ress[1].toNumber();
+                      game.prestige_info[idx].locktime = ress[2].toNumber();
                   } 
             });
       } 
@@ -366,6 +367,7 @@
                   game.boosterdata[idx].currentPrice = ress[3];
                   game.boosterdata[idx].increasePct = ress[4];
                   game.boosterdata[idx].maxNumber = ress[5];
+                  game.boosterdata[idx].locktime = ress[6].toNumber();
 
              } 
              else
@@ -408,6 +410,7 @@
                   game.rigdata[idx].baseOutput = ress[1].toNumber();
                   game.rigdata[idx].unlockMultiplier = ress[2].toNumber();
                   game.rigdata[idx].limit = 512;
+                  game.rigdata[idx].locktime = ress[3].toNumber();
              } 
              else
              {
@@ -596,25 +599,8 @@
       }
 
 
-   
-      function debug_gold()
-      {
-        if(typeof web3.eth.accounts[0]  != 'undefined')
-        {
-
-          rig_wars_contract = web3.eth.contract(abi).at(contract_address);
-
-          rig_wars_contract.DEBUGMoney.sendTransaction(20000000000,{from:account,gasPrice: game.default_gas_price},callback);
-        }
-        else // No Metamask Address Found!
-        {
-          $('#metamask_alert_message').html(gametext.error[1]);
-          $('#metamask_alert').modal('show');
-        }  
-      }
   
-
-      
+    
       function ClaimPersonalShare()
       {
         if(typeof web3.eth.accounts[0]  != 'undefined')

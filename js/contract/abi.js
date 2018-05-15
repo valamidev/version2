@@ -126,6 +126,10 @@
 			{
 				"name": "_unlockMultiplier",
 				"type": "uint256"
+			},
+			{
+				"name": "_lockTime",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -587,6 +591,10 @@
 			{
 				"name": "bonusPct",
 				"type": "uint256"
+			},
+			{
+				"name": "_lockTime",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -751,6 +759,10 @@
 			},
 			{
 				"name": "maxNumber",
+				"type": "uint256"
+			},
+			{
+				"name": "_lockTime",
 				"type": "uint256"
 			}
 		],

@@ -1,6 +1,3 @@
-window.showrig = 1;
-window.showarmy = 0;
-
 game = [];
 
 game.default_gas_price = web3.toHex(2100000000); //2.1 Gwei best price!

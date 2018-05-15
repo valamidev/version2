@@ -4,7 +4,7 @@
 
 function AddNewPrestige()
 {
-     idx = 3;   
+     idx = 0;   
      price = 10000000;
      bonuspct = 50;
 
@@ -30,7 +30,7 @@ function AddNewPrestige()
 
 function AddorModifyRig()
 {
-     idx = 8;   
+     idx = 0;   
      price = 2500000000000;
      basehashrate = 1500000;
      multiplier = 1;
@@ -54,15 +54,20 @@ function AddorModifyRig()
 
   function AddNewBooster()
 {
-     idx = 1;   
-     rigType = -1;
-     flatBonus = 20000;
-     pctBonus = 0;
-     ETHPrice = 10000000000000000; // WEI 0.01 ETH
-     priceIncreasePct = 15;
-     totalCount = 1;
 
-    rig_wars_contract = web3.eth.contract(abi).at(contract_address);
+
+  
+          idx = 1;   
+          rigType = 0;
+          flatBonus = 0; // flat modifier adds +10 hash/s per rig
+          pctBonus = 1000; // percent modifier adds +10% hash/s per rig
+          ETHPrice = 10000000000000000; // WEI 0.01 ETH
+          priceIncreasePct = 3;
+          totalCount = 10;
+
+
+
+  rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
         rig_wars_contract.AddNewBooster.sendTransaction(idx,rigType,flatBonus,pctBonus,ETHPrice,priceIncreasePct,totalCount,{from:account,gasPrice: game.default_gas_price},function(err,ress)
         {
