@@ -66,6 +66,7 @@ function AddorModifyRig()
           totalCount = 10;
 
 
+         console.log(toETH(ETHPrice));
 
   rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
