@@ -133,7 +133,7 @@ function buy_action_rig (data)
 
          cost_next = game.rigdata[index].basePrice*game.rigdata[index].unlockMultiplier; //Get Price of the Upgrade!
 
-            if(cost_next < game.balance)
+            if(cost_next < game.futurebalance)
             {
                possible_buy = 1;  
             }

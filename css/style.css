@@ -227,7 +227,7 @@ table.light tr td {
   background-color: #959595;
   width: 100%;
   border-radius: 5px;
-  background-image: url(..//images/ico2.png);
+  background-image: url(..//images/ico1.png);
   color: #ffffff;
 }
 
@@ -430,4 +430,8 @@ body{
 
 .navbar{
   padding: 0px;  
+}
+
+.bg-dark{
+ background-color: #262626 !important; 
 }

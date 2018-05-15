@@ -5,13 +5,14 @@ function update_dash()
 
     let bonus = "";
 
-    if(game.prestige_info[game.prestigeLevel].bonus > 100)
-    {
-      bonus = " +"+(game.prestige_info[game.prestigeLevel].bonus-100)+"% Hash";
-    }
 
     if(typeof game.prestige_info[game.prestigeLevel]  != 'undefined')
     {
+            if(game.prestige_info[game.prestigeLevel].bonus > 100)
+            {
+            bonus = " +"+(game.prestige_info[game.prestigeLevel].bonus-100)+"% Hash";
+            }
+
 
             $('#nextlevelprestige').html("Next level: "+show_big_values(game.prestige_info[game.prestigeLevel].price));
 
@@ -185,7 +186,7 @@ function update_rig_ui(idx,count,possible_buy,cost_next)
     $('.card').find('[data-price-next-rig="' + idx+'-1"]').html(show_big_values(cost_next));  
     $('.card').find('[data-buyrig-unlock-button="' + idx+'-1"]').html(show_big_values(cost_next));  
 
-    $('[data-rig-hashrate="1-'+idx+'-1"]').html(game.Minerrigdata[idx].rigTotalProduction); 
+    $('[data-rig-hashrate="1-'+idx+'-1"]').html(show_big_values_hash(game.Minerrigdata[idx].rigTotalProduction)+'/s'); 
 
     if(count > 0)
     {
