@@ -378,11 +378,6 @@ table.light tr td {
 
 
 
-body{
-    min-width:1213px;        /* Suppose you want minimum width of 1000px */
-    width: auto !important;  /* Firefox will set width as auto */
- }
-
 
  .btn-console
  {
