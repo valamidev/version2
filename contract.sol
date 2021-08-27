@@ -1,4 +1,8 @@
-pragma solidity 0.4.26;
+/**
+ *Submitted for verification at Etherscan.io on 2018-05-15
+*/
+
+pragma solidity ^0.4.18;
 
 library SafeMath {
     function add(uint256 a, uint256 b) internal pure returns (uint256 c) {
@@ -49,7 +53,7 @@ contract ERC20 {
 }
 
 //-----------------------------------------------------------------------
-contract RigIdle is ERC20 {
+contract RigIdle2 is ERC20 {
     using GeometricSequence for uint;
     using SafeMath for uint;
 
@@ -139,7 +143,7 @@ contract RigIdle is ERC20 {
     // ------------------------------------------------------------------------
     // Constructor
     // ------------------------------------------------------------------------
-    function RigIdle() public {
+    constructor() public {
         owner = msg.sender;
         
         //                   price,           prod.     unlockMultiplier

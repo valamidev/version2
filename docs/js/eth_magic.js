@@ -1,195 +1,181 @@
 
-
-const contract_address = "0x45E2ebB75981886a1f83ba514de80D33Fb5c3D99";
-
+window.rigwarsLoaded = 0;
 
 window.addEventListener('load', function () {
   if (typeof web3 !== 'undefined') {
 
     window.ethereum.enable();
 
-    refresh_gui_dapp();
+    startApp(web3);
   }
   else {
     $('#metamask_alert_message').html(gametext.error[0]);
     $('#metamask_alert').modal('show');
   }
 });
+// WEB3 INIT DONE!
 
-
-// CONTRACT ADDRESSS! 
-
+const contract_address = "0x3778E7d8365781Def978A6ddd658409EA299c1e9";
 var account = web3.eth.accounts[0];
 
-function startApp(account) {
-  game.user_address = account;
-  contract_init(); // GAME LOAD!
-}
+function startApp(web3) {
 
-function refresh_gui_dapp() {
+  window.ethereum.enable();
 
   web3 = new Web3(web3.currentProvider);
 
 
   web3.eth.getAccounts().then(() => {
-    startApp(account);
+    contract_init(); // GAME LOAD!
   }
-  ).catch(function (err) {
-    console.log(err);
-    $("prologe").show();
-    $("main").hide();
-    if (err == 1) {
-      setTimeout(function () {
-        refresh_gui_dapp();
-      }, 5000);
-    }
-  });;
-
+  );
 
 
 }
 
 
 function contract_init() {
-
-  console.log("Player Address: " + game.user_address);
-
-
   if (typeof web3.eth.accounts[0] != 'undefined') {
+
+ 
     game.user_address = web3.eth.accounts[0];
+
+    console.log("Player Address: " + game.user_address);
+
 
     rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-  }
-  //console.log(ig_wars_contract.GetMinerData)
+    // GET MINER DATA
+    rig_wars_contract.GetMinerData.call(game.user_address, {}, function (error, result) {
+      if (!error) {
+        game.balance = result[0].toNumber() + 1;
+        game.lastupdate = result[1].toNumber();
+        game.prodPerSec =  result[2].toNumber();
+        game.unclaimedPot = result[3].toNumber();
+        game.globalFlat = result[4].toNumber();
+        game.globalPct = result[5].toNumber();
+        game.prestigeLevel = result[6].toNumber();
+
+        GetPrestigeInfo(game.prestigeLevel);
+        GetPrestigeInfo(game.prestigeLevel + 1);
 
 
-  // GET MINER DATA
-  rig_wars_contract.GetMinerData.call(game.user_address, {}, function (error, result) {
-    if (!error) {
-      game.balance = result[0].toNumber() + 1;
-      game.lastupdate = result[1].toNumber();
-      game.prodPerSec = result[2].toNumber();
-      game.unclaimedPot = result[3].toNumber();
-      game.globalFlat = result[4].toNumber();
-      game.globalPct = result[5].toNumber();
-      game.prestigeLevel = result[6].toNumber();
+  
 
-      GetPrestigeInfo(game.prestigeLevel);
-      GetPrestigeInfo(game.prestigeLevel + 1);
+        if (game.prodPerSec > 0) { // SHOW GUI
+          game_started();
+        }
+        else {
+          setTimeout(function () {
+            contract_init();
+          }, 5000);
+        }
+        /*
+              GetMinerData(address minerAddr) public constant returns 
+                (uint256 money, uint256 lastupdate, uint256 prodPerSec, 
+                uint256 unclaimedPot, uint256 globalFlat, uint256 globalPct)  
+        */
 
-      if (game.prodPerSec > 0) { // SHOW GUI
-        game_started();
+        for (let index = 0; index < result.length; index++) {
+          console.log('Minerdata - Index: ' + index + " Value: " + result[index].toString());
+        }
       }
       else {
-        setTimeout(function () {
-          contract_init();
-        }, 5000);
+        console.log(error);
       }
-      /*
-            GetMinerData(address minerAddr) public constant returns 
-              (uint256 money, uint256 lastupdate, uint256 prodPerSec, 
-              uint256 unclaimedPot, uint256 globalFlat, uint256 globalPct)  
-      */
+    });
 
-      for (let index = 0; index < result.length; index++) {
-        console.log('Minerdata - Index: ' + index + " Value: " + result[index].toString());
+    // GET GLOBAL POT
+    rig_wars_contract.GetPotInfo.call({}, function (error, result) // NETWORK ETH
+    {
+      if (!error) {
+
+        game.networkpot = web3.fromWei(result[0], 'ether');
+        game.next_ico = result[1].toNumber();
+        game.nextdistributiontime = result[2].toNumber();
+
+
+        for (let index = 0; index < result.length; index++) {
+          console.log('ICO data - Index: ' + index + " Value: " + result[index].toString());
+        }
       }
-    }
-    else {
-      console.log(error);
-    }
-  });
-
-  // GET GLOBAL POT
-  rig_wars_contract.GetPotInfo.call({}, function (error, result) // NETWORK ETH
-  {
-    if (!error) {
-
-      game.networkpot = web3.fromWei(result[0], 'ether');
-      game.next_ico = result[1].toNumber();
-      game.nextdistributiontime = result[2].toNumber();
-
-
-      for (let index = 0; index < result.length; index++) {
-        console.log('ICO data - Index: ' + index + " Value: " + result[index].toString());
+      else {
+        console.log(error);
       }
-    }
-    else {
-      console.log(error);
-    }
-  });
+    });
 
-  // GET NETWORK HASH and MONEY 
-  rig_wars_contract.GetGlobalProduction.call({}, function (err, ress) {
-    if (!err) {
-      game.networkhodl = ress[0];
-      game.networkhash = ress[1];
-    }
-  });
-
-  // LOAD YOUR RIGS 0-10!!!!!!
-
-  rig_wars_contract.GetMinerRigsCount.call(game.user_address, 0, {}, function (err, ress) {
-    if (!err) {
-      for (let index = 0; index < ress[0].length; index++) {
-        game.Minerrigdata[index] = {};
-
-        game.Minerrigdata[index].rigCount = ress[0][index].toNumber();
-        game.Minerrigdata[index].rigTotalProduction = ress[1][index].toNumber();
+    // GET NETWORK HASH and MONEY 
+    rig_wars_contract.GetGlobalProduction.call({}, function (err, ress) {
+      if (!err) {
+        game.networkhodl = ress[0];
+        game.networkhash = ress[1];
       }
+    });
+
+    // LOAD YOUR RIGS 0-10!!!!!!
+
+    rig_wars_contract.GetMinerRigsCount.call(game.user_address, 0, {}, function (err, ress) {
+      if (!err) {
+        for (let index = 0; index < ress[0].length; index++) {
+          game.Minerrigdata[index] = {};
+
+          game.Minerrigdata[index].rigCount = ress[0][index].toNumber();
+          game.Minerrigdata[index].rigTotalProduction = ress[1][index].toNumber();
+        }
 
 
-    }
-  });
-
-
-  // LOAD BOOSTERS
-  GetBoosterCount();
-
-  // LOAD MY BOOSTERS
-  rig_wars_contract.HasBooster.call(game.user_address, 0, {}, function (err, ress) {
-    if (!err) {
-      for (let index = 0; index < ress.length; index++) {
-        game.Minerboosterdata[index] = ress[index].toNumber();
       }
-    }
-  });
+    });
 
 
-  //Available Rigs in the game  
-  GetTotalRigCount();
+    // LOAD BOOSTERS
+    GetBoosterCount();
 
-  // ICO and FULL ICO UPDATES
-  GetCurrentICOCycle();
-
-  // GET ETH BALANCE OF USER
-  web3.eth.getBalance(game.user_address, function (err, ress) {
-    if (!err) {
-      game.ethbalance = web3.fromWei(ress, 'ether');;
-      console.log("ETH balance: " + game.ethbalance + " Ether");
-    }
-  });
-
-
-  // WHY IT IS SO UGLY JS WHY?!
-  (async () => {
-    await web3.eth.getBlockNumber(
-      function (err, ress) {
-        web3.eth.getBlock(ress, function (err, ress) {
-
-          if (!ress) {
-            setTimeout(function () { contract_init() }, 2000);
-          }
-          else {
-            game.time = parseInt(ress.timestamp);
-            console.log("game item: " + game.time);
-          }
-
-        });
+    // LOAD MY BOOSTERS
+    rig_wars_contract.HasBooster.call(game.user_address, 0, {}, function (err, ress) {
+      if (!err) {
+        for (let index = 0; index < ress.length; index++) {
+          game.Minerboosterdata[index] = ress[index].toNumber();
+        }
       }
-    )
-  })();
+    });
+
+
+    //Available Rigs in the game  
+    GetTotalRigCount();
+
+    // ICO and FULL ICO UPDATES
+    GetCurrentICOCycle();
+
+    // GET ETH BALANCE OF USER
+    web3.eth.getBalance(game.user_address, function (err, ress) {
+      if (!err) {
+        game.ethbalance = web3.fromWei(ress, 'ether');;
+        console.log("ETH balance: " + game.ethbalance + " Ether");
+      }
+    });
+
+
+    // WHY IT IS SO UGLY JS WHY?!
+    (async () => {
+      await web3.eth.getBlockNumber(
+        function (err, ress) {
+          web3.eth.getBlock(ress, function (err, ress) {
+
+            if (!ress) {
+              setTimeout(function () { contract_init() }, 2000);
+            }
+            else {
+              game.time = parseInt(ress.timestamp);
+              console.log("game item: " + game.time);
+            }
+
+          });
+        }
+      )
+    })();
+
+  }
 
 }
 

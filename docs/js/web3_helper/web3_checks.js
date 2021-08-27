@@ -1,29 +1,4 @@
 
-function valid_account()
-{
-
-        return new Promise((resolve, reject) => 
-        {
-            if (typeof web3 !== 'undefined') 
-            {
-                
-                var provider = web3.currentProvider;
-
-                    if(typeof web3.eth.accounts[0]  != 'undefined') 
-                    { 
-                    resolve(web3.eth.accounts[0]);   
-                    }
-                    else
-                    {
-                    reject(1);
-                    }
-            }        
-            else
-            {
-             reject(2);
-            }        
-          });
-}
 
 
 function show_error_metamask(error,no_error=0)

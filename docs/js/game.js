@@ -1,6 +1,7 @@
 game = [];
 
 game.default_gas_price = web3.toHex(10100000000); //10.1 Gwei best price!
+
 game.optimalsavetime = 10800;
 game.optimalclaim = 86400;
 
