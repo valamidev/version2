@@ -2,7 +2,7 @@
  *Submitted for verification at Etherscan.io on 2018-05-15
 */
 
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.26;
 
 library SafeMath {
     function add(uint256 a, uint256 b) internal pure returns (uint256 c) {
@@ -190,7 +190,7 @@ contract RigIdle2 is ERC20 {
         
         estimatedSupply = 21 * 10**6 * 10**18;
     }
-    }
+    
     
     //--------------------------------------------------------------------------
     // Data access functions
