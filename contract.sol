@@ -127,9 +127,9 @@ contract RigIdle2 is ERC20 {
     
     // ERC20 functionality
     mapping(address => mapping(address => uint256)) private allowed;
-    string public constant name  = "RigWarsIdle";
+    string public constant name  = "RigWars";
     string public constant symbol = "RIG";
-    uint8 public constant decimals = 8;
+    uint8 public constant decimals = 18;
     uint256 private estimatedSupply;
     
     // referral
@@ -188,7 +188,8 @@ contract RigIdle2 is ERC20 {
         globalICOPerCycle.push(1);
         cycleCount = 0;
         
-        estimatedSupply = 1000000000000000000000000000;
+        estimatedSupply = 21 * 10**6 * 10**18;
+    }
     }
     
     //--------------------------------------------------------------------------
