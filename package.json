@@ -1,0 +1,23 @@
+{
+  "name": "rigwars",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rigwars/rigwars.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rigwars/rigwars/issues"
+  },
+  "homepage": "https://github.com/rigwars/rigwars#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

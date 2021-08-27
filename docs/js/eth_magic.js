@@ -1,12 +1,23 @@
-    window.addEventListener('load', function() {
-            
-      refresh_gui_dapp();
+    
 
+   window.addEventListener('load', function() {
+    if (typeof web3 !== 'undefined') 
+    {
+
+    window.ethereum.enable();
+
+    refresh_gui_dapp();
+    } 
+    else 
+    { 
+      $('#metamask_alert_message').html(gametext.error[0]);
+      $('#metamask_alert').modal('show');
+    }
     });
+
 
       // CONTRACT ADDRESSS! 
       const contract_address = "0x5d4cbcd30515d78370f35c5e45427dd576922225";
-      // USER ACCOUNT!
       var account =  web3.eth.accounts[0];
 
       function startApp(account) 
@@ -17,25 +28,31 @@
 
       function refresh_gui_dapp()
       {
-          valid_account().then(function(ress)
-                {
-                  if(ress)
-                  {
-                  console.log(ress);
-                  startApp(ress);
-                  }
-                }).catch(function(err)
-                { 
-                  console.log(err);
-                  $("prologe").show();  
-                  $("main").hide();  
-                  if(err==1)
-                  {
-                    setTimeout(function(){
-                      refresh_gui_dapp(); 
-                     }, 5000);
-                  }
-                });
+
+
+        window.ethereum.enable();
+
+        web3 = new Web3(web3.currentProvider);
+
+
+        web3.eth.getAccounts().then(() =>{
+          startApp(account);
+        }
+        ).catch(function(err)
+        { 
+          console.log(err);
+          $("prologe").show();  
+          $("main").hide();  
+          if(err==1)
+          {
+            setTimeout(function(){
+              refresh_gui_dapp(); 
+             }, 5000);
+          }
+        });;
+
+
+
       }
 
 

@@ -1,2 +1,4 @@
 generator.php
 updater.html
+
+node_modules/*
