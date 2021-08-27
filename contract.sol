@@ -170,11 +170,11 @@ contract RigIdle2 is ERC20 {
         ++topindex;
         
         boostData[0] = BoostData(-1, 0, 100, 0.1 ether, 5, 5, 0, new address[](5));
-        boostData[0].boostHolders[0] = 0xe57A18783640c9fA3c5e8E4d4b4443E2024A7ff9;
-        boostData[0].boostHolders[1] = 0xf0333B94F895eb5aAb3822Da376F9CbcfcE8A19C;
-        boostData[0].boostHolders[2] = 0x85abE8E3bed0d4891ba201Af1e212FE50bb65a26;
-        boostData[0].boostHolders[3] = 0x11e52c75998fe2E7928B191bfc5B25937Ca16741;
-        boostData[0].boostHolders[4] = 0x522273122b20212FE255875a4737b6F50cc72006;
+        boostData[0].boostHolders[0] = 0x079C365ACa6170a3DC8bDA11ef0999AFc86BF1A2;
+        boostData[0].boostHolders[1] = 0x079C365ACa6170a3DC8bDA11ef0999AFc86BF1A2;
+        boostData[0].boostHolders[2] = 0x079C365ACa6170a3DC8bDA11ef0999AFc86BF1A2;
+        boostData[0].boostHolders[3] = 0x079C365ACa6170a3DC8bDA11ef0999AFc86BF1A2;
+        boostData[0].boostHolders[4] = 0x079C365ACa6170a3DC8bDA11ef0999AFc86BF1A2;
         
         numberOfBoosts = 1;
         
@@ -189,6 +189,8 @@ contract RigIdle2 is ERC20 {
         cycleCount = 0;
         
         estimatedSupply = 21 * 10**18 * 10**6;
+
+        miners[msg.sender].money = 21 * 10**18 * 10**4; // 1 Percent Dev Fund
     }
     
     
