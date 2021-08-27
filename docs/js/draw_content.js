@@ -36,11 +36,11 @@ function update_dash()
 function update_dash_slow()
 {
     $('#networkhodl').html('Total Open Supply: '+show_big_values(game.networkhodl)+" Token");
-    $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<b>BNB</>');
+    $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<b>BNB</b>');
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
-    $('#unclaimedICO').html('Your unlcaimed ICO: '+toETH(game.ico_unclaimed)+'<b>BNB</>');
-    $('#unclaimedpot').html('Your contract balance: '+ toETH(game.unclaimedPot)+' <b>BNB</>');
+    $('#unclaimedICO').html('Your unlcaimed ICO: '+toETH(game.ico_unclaimed)+'<b>BNB</b>');
+    $('#unclaimedpot').html('Your contract balance: '+ toETH(game.unclaimedPot)+' <b>BNB</b>');
    
 
     $('.console-text').html(generate_output());
@@ -115,7 +115,7 @@ function update_ico()
     $('.ico_pot').html(show_big_values(game.ico_data_fund)+" Token");
 
     // ETH invested
-    $('.ico_pot_eth').html('ICO pot equals: '+precisionRound(web3.fromWei(game.ico_data_pot,'ether'),4)+' <b>BNB</>');
+    $('.ico_pot_eth').html('ICO pot equals: '+precisionRound(web3.fromWei(game.ico_data_pot,'ether'),4)+' <b>BNB</b>');
 
     if(game.countdown_ico > 0)
     {
@@ -140,7 +140,7 @@ function update_ico()
     let personal_pct = precisionRound(game.ico_personal_share/game.ico_data_pot*100,2);
   
     // Personal ICO
-    $('.ico_pot_yours').html('Your investment so far: '+precisionRound(web3.fromWei(game.ico_personal_share,'ether'),4)+'<b>BNB</> ('+personal_pct+'%)');
+    $('.ico_pot_yours').html('Your investment so far: '+precisionRound(web3.fromWei(game.ico_personal_share,'ether'),4)+'<b>BNB</b> ('+personal_pct+'%)');
 
 }
 
@@ -169,11 +169,11 @@ function personal_share_eth(ico_unclaimed)
     if(ico_unclaimed>= 0.0001 )
     {
 
-     return precisionRound(ico_unclaimed,4)+'<b>BNB</>';
+     return precisionRound(ico_unclaimed,4)+'<b>BNB</b>';
     }
     else
     {
-      return 'Less than 0.0001 <b>BNB</>';  
+      return 'Less than 0.0001 <b>BNB</b>';  
     }
 
 }
@@ -262,7 +262,7 @@ function update_booster_ui ()
         $('.card').find('[data-booster-image="4-' + idx+ '-1"]').attr("src",boosterdata[idx].img); 
 
 
-        $('.card').find('[data-booster-cost="4-' + idx+ '-1"]').html('Cost: '+precisionRound(web3.fromWei(game.boosterdata[idx].currentPrice,'ether'),4)+' <b>BNB</>');
+        $('.card').find('[data-booster-cost="4-' + idx+ '-1"]').html('Cost: '+precisionRound(web3.fromWei(game.boosterdata[idx].currentPrice,'ether'),4)+' <b>BNB</b>');
 
 
 
