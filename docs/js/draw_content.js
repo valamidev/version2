@@ -36,10 +36,10 @@ function update_dash()
 function update_dash_slow()
 {
     $('#networkhodl').html('Total Open Supply: '+show_big_values(game.networkhodl)+" Token");
-    $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<b>BNB</b>');
+    $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+' <b>BNB</b>');
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
-    $('#unclaimedICO').html('Your unlcaimed ICO: '+toETH(game.ico_unclaimed)+'<b>BNB</b>');
+    $('#unclaimedICO').html('Your unlcaimed ICO: '+toETH(game.ico_unclaimed)+' <b>BNB</b>');
     $('#unclaimedpot').html('Your contract balance: '+ toETH(game.unclaimedPot)+' <b>BNB</b>');
    
 
