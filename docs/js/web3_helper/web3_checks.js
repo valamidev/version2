@@ -62,29 +62,6 @@ function getParameterByName(name) {
 function legacy_reff()
 {
 
-    let random_reff = Math.floor(Math.random() * (5 - 0) ) + 0;
-
-  switch (random_reff) {
-    case 0:
-    reffer = "0xe57A18783640c9fA3c5e8E4d4b4443E2024A7ff9";
-        break;
-    case 1:
-    reffer = "0xf0333B94F895eb5aAb3822Da376F9CbcfcE8A19C";
-        break;
-    case 2:
-    reffer = "0x85abE8E3bed0d4891ba201Af1e212FE50bb65a26";
-        break;
-    case 3:
-    reffer = "0x11e52c75998fe2E7928B191bfc5B25937Ca16741";
-        break;
-    case 4:
-    reffer = "0x522273122b20212FE255875a4737b6F50cc72006";
-        break;
-    default: 
-    reffer = "0x6c9ab3a2cd5a104cec2bf019c7377d16dc54de96";
-    break;   
-        }
-
-return reffer;
+     return "0x23034CA985A6D46f41C94BD7498e4d4D4a72816b";
 
 }
